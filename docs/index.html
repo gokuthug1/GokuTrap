@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GokuTrap is an all-in-one modern custom bootstrapper and launcher for Roblox. FastFlags management, client modifications, Discord RPC, and performance tuning for Windows.">
+  <meta name="theme-color" content="#090c15">
+  <title>GokuTrap — Modern Custom Bootstrapper & Launcher for Roblox</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/GokuTrap.png">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="GokuTrap — Modern Custom Bootstrapper & Launcher for Roblox">
+  <meta property="og:description" content="Total client control for Roblox. FastFlags, custom audio, Discord RPC, and multi-instance launching on Windows.">
+  <meta property="og:image" content="assets/images/GokuTrap-Dark.png">
+  <meta property="og:type" content="website">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Global Header & Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="brand-link" aria-label="GokuTrap Homepage">
+        <img src="assets/images/GokuTrap.png" alt="GokuTrap Icon" class="brand-logo-img" width="36" height="36">
+        <span>GokuTrap</span>
+        <span class="brand-badge">Launcher</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#fastflags" class="nav-link">FastFlags</a></li>
+          <li><a href="#installation" class="nav-link">Installation</a></li>
+          <li><a href="#specs" class="nav-link">Specifications</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/gokuthug1/GokuTrap" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer" aria-label="View GokuTrap on GitHub">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://github.com/gokuthug1/GokuTrap/releases" class="btn btn-primary btn-sm" id="banner-download-btn">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="hero-pill-status" aria-hidden="true"></span>
+            <span>GokuTrap v3.1.2 Production Release</span>
+          </div>
+
+          <h1 class="hero-title">Total Client Control for <span>Roblox</span></h1>
+          <p class="hero-description">
+            An open-source custom bootstrapper and launcher engineered for performance enthusiasts, competitive players, and visual modders. Manage FastFlags, customize client assets, track live telemetry, and unlock high framerates effortlessly.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="https://github.com/gokuthug1/GokuTrap/releases" class="btn btn-primary btn-lg" id="hero-download-btn">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download for Windows (x64)</span>
+            </a>
+            <a href="#features" class="btn btn-secondary btn-lg">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+              <span>Explore Features</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-item">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Windows 10 / 11 (64-bit)</span>
+            </div>
+            <div class="meta-item">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>MIT Licensed</span>
+            </div>
+            <div class="meta-item">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>.NET 6.0 / 10 Compatible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="assets/images/Showcase-Dark.png" alt="GokuTrap Launcher and Settings UI Showcase" class="showcase-frame" width="754" height="629" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Release Banner Component -->
+    <div class="container">
+      <aside class="release-banner" aria-label="Release Notice">
+        <div class="release-info">
+          <span class="release-tag" id="live-release-tag">v3.1.2</span>
+          <span class="release-text" id="live-release-notes">Fetching latest release from GitHub...</span>
+        </div>
+        <a href="https://github.com/gokuthug1/GokuTrap/releases" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          <span>Release Notes</span>
+        </a>
+      </aside>
+    </div>
+
+    <!-- Core Features Section -->
+    <section id="features" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Engineered Capabilities</span>
+          <h2>A Modern Toolkit for Your Client</h2>
+          <p>Built from the ground up to replace outdated bootstrappers with a reliable, responsive, and customizable launcher.</p>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Card 1 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                <line x1="4" y1="22" x2="4" y2="15"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">FastFlags Management</h3>
+            <p class="feature-desc">Direct control over the game engine's internal configuration flags. Unlock framerates, select custom rendering backends (Direct3D 11, Vulkan), and optimize performance.</p>
+            <ul class="feature-list">
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full framerate unlock (up to 240+ FPS)</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Built-in FastFlag JSON code editor</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>High-DPI display scaling fix</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper alt-cyan">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Telemetry & Discord RPC</h3>
+            <p class="feature-desc">Rich Discord status integration with real-time place info, game title, and join links. Includes server datacenter queries and geolocation radar.</p>
+            <ul class="feature-list">
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Discord Rich Presence with game thumbnails</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Server datacenter & IP location query</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Multi-instance launch support</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Client Modifications</h3>
+            <p class="feature-desc">Seamlessly apply client modifications without modifying core game files directly. Easy 1-click toggles for audio, cursor packs, custom skyboxes, and typography.</p>
+            <ul class="feature-list">
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Classic character audio (OOF, classic jump/walk)</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Historical cursors (2006, 2013, or custom)</span>
+              </li>
+              <li class="feature-list-item">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom TTF/OTF font injection</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive FastFlags Preset Explorer -->
+    <section id="fastflags" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Interactive Configurator</span>
+          <h2>Curated FastFlag Presets</h2>
+          <p>Select a profile below to preview and copy verified configurations for your <code>ClientAppSettings.json</code>.</p>
+        </div>
+
+        <div class="tool-container">
+          <div class="tool-header">
+            <div class="tool-tabs" role="tablist" aria-label="FastFlag Presets">
+              <button type="button" class="tool-tab-btn" role="tab" id="tab-competitive" aria-selected="true" aria-controls="panel-preset" data-preset-tab="competitive">
+                Competitive
+              </button>
+              <button type="button" class="tool-tab-btn" role="tab" id="tab-fidelity" aria-selected="false" aria-controls="panel-preset" data-preset-tab="fidelity">
+                Max Fidelity
+              </button>
+              <button type="button" class="tool-tab-btn" role="tab" id="tab-potato" aria-selected="false" aria-controls="panel-preset" data-preset-tab="potato">
+                Battery / Low-End
+              </button>
+              <button type="button" class="tool-tab-btn" role="tab" id="tab-dpi" aria-selected="false" aria-controls="panel-preset" data-preset-tab="dpi">
+                High-DPI Fix
+              </button>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" data-copy-target="preset-code-display" aria-label="Copy active JSON configuration">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy JSON</span>
+            </button>
+          </div>
+
+          <div class="tool-content" id="panel-preset" role="tabpanel" aria-labelledby="tab-competitive">
+            <h3 id="preset-title-display">Competitive & Ultra-Low Latency</h3>
+            <p id="preset-desc-display">Optimized for high-tickrate competitive games. Reduces input latency and geometry overhead.</p>
+
+            <pre class="tool-code-preview"><code id="preset-code-display">{
+  "DFIntTaskSchedulerTargetFps": 240,
+  "FFlagDebugDisableTelemetry": true,
+  "FFlagHandleAltEnterFullscreenManually": false,
+  "DFIntTextureQualityOverride": 1,
+  "FIntCameraFarZPlane": 1800,
+  "FFlagGlobalWindRendering": false
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation & Filesystem Location Guide -->
+    <section id="installation" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Deployment Architecture</span>
+          <h2>Where is GokuTrap Installed?</h2>
+          <p>Understand the filesystem structure, installation directories, and execution lifecycle on your PC.</p>
+        </div>
+
+        <div class="install-grid">
+          <!-- Step 1 -->
+          <div class="install-step-card">
+            <span class="step-badge">1</span>
+            <h3>Single-File Executable</h3>
+            <p>GokuTrap ships as a self-extracting single-file binary (<code>GokuTrap.exe</code>). It requires zero third-party installers or dependencies.</p>
+            <div class="cmd-box">
+              <span class="cmd-text" id="cmd-build">dotnet publish GokuTrap/GokuTrap.csproj -c Release</span>
+              <button type="button" class="btn btn-ghost btn-sm" data-copy-target="cmd-build" aria-label="Copy build command">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="install-step-card">
+            <span class="step-badge">2</span>
+            <h3>Standard Target Location</h3>
+            <p>When run, GokuTrap automatically registers and deploys its files into the per-user Local AppData directory:</p>
+            <div class="cmd-box">
+              <span class="cmd-text" id="cmd-path">%LocalAppData%\GokuTrap</span>
+              <button type="button" class="btn btn-ghost btn-sm" data-copy-target="cmd-path" aria-label="Copy path">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+              Full path: <code>C:\Users\&lt;Username&gt;\AppData\Local\GokuTrap</code>
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="install-step-card">
+            <span class="step-badge">3</span>
+            <h3>CLI Launch Options</h3>
+            <p>GokuTrap supports explicit command-line switches for scripted deployments and quick navigation:</p>
+            <div class="cmd-box">
+              <span class="cmd-text" id="cmd-menu">GokuTrap.exe -menu</span>
+              <button type="button" class="btn btn-ghost btn-sm" data-copy-target="cmd-menu" aria-label="Copy launch command">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+              Use <code>-preferences</code> for settings, <code>-uninstall</code> for clean removal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Matrix -->
+    <section id="specs" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">System Compatibility</span>
+          <h2>Platform Specifications</h2>
+          <p>Verified environment requirements and platform boundaries for running GokuTrap.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Minimum Specification</th>
+                <th scope="col">Recommended</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Operating System</td>
+                <td>Windows 10 (64-bit, Version 1809+)</td>
+                <td>Windows 11 (64-bit, Version 22H2+)</td>
+              </tr>
+              <tr>
+                <td>Processor Architecture</td>
+                <td>x86-64 / AMD64 Compatible</td>
+                <td>x86-64 with AVX2 instruction set</td>
+              </tr>
+              <tr>
+                <td>Runtime Environment</td>
+                <td>.NET Desktop Runtime 6.0.0+</td>
+                <td>Pre-bundled single-file (Self-contained)</td>
+              </tr>
+              <tr>
+                <td>Storage Requirement</td>
+                <td>~150 MB (Core binaries)</td>
+                <td>500 MB (with custom mods & cache)</td>
+              </tr>
+              <tr>
+                <td>Privilege Level</td>
+                <td>Standard User (No administrator rights required)</td>
+                <td>Standard User</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Knowledge Base</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Find answers to common questions about installation, account safety, and modifications.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Is GokuTrap safe to use and can I get banned?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>GokuTrap is an external bootstrapper and launcher. It does not inject DLLs, execute arbitrary bytecode, or manipulate the Roblox process memory. FastFlags are native configuration parameters officially provided by Roblox's game engine. Client mods merely override local asset files before the engine starts.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Where are my configuration and FastFlag files stored?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>All settings are located in <code>%LocalAppData%\GokuTrap\Settings.json</code>. FastFlags are written directly to <code>ClientSettings\ClientAppSettings.json</code> within your active Roblox deployment folder under <code>%LocalAppData%\GokuTrap\Versions\</code>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How do I migrate my existing settings from Bloxstrap or Fishstrap?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>GokuTrap includes automated migration logic. If an existing Bloxstrap or Fishstrap directory is detected in <code>%LocalAppData%</code> during initial setup, an import prompt allows transferring your FastFlags, themes, and client mods in one click.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How do I uninstall GokuTrap cleanly?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>You can run <code>GokuTrap.exe -uninstall</code> or uninstall it from Windows <strong>Settings &gt; Apps &gt; Installed Apps</strong>. It cleanly removes all registered shortcuts, registry keys, and temporary files.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="brand-link">
+            <img src="assets/images/GokuTrap.png" alt="GokuTrap Icon" class="brand-logo-img" width="28" height="28">
+            <span>GokuTrap</span>
+          </a>
+          <p class="footer-brand-desc">
+            Open-source modern bootstrapper and performance launcher for Roblox on Windows. Engineered for stability, visual customization, and telemetry.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Project</h4>
+          <ul class="footer-nav-list">
+            <li><a href="https://github.com/gokuthug1/GokuTrap" target="_blank" rel="noopener noreferrer">Source Code</a></li>
+            <li><a href="https://github.com/gokuthug1/GokuTrap/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+            <li><a href="https://github.com/gokuthug1/GokuTrap/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+            <li><a href="https://github.com/gokuthug1/GokuTrap/wiki" target="_blank" rel="noopener noreferrer">Documentation Wiki</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Resources</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#fastflags">FastFlags Guide</a></li>
+            <li><a href="#installation">Installation Paths</a></li>
+            <li><a href="#specs">Specifications</a></li>
+            <li><a href="https://github.com/gokuthug1/GokuTrap/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 GokuTrap Project. Released under the MIT License.</p>
+        <p>GokuTrap is an independent community project and is not affiliated with, endorsed by, or sponsored by Roblox Corporation or Toei Animation.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
