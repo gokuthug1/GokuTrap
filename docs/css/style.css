@@ -553,6 +553,23 @@ code, kbd {
   color: var(--text-muted);
 }
 
+/* A headline feature card spans the full grid row and flows its bullets into columns. */
+.feature-card-wide {
+  grid-column: 1 / -1;
+}
+
+.feature-card-wide .feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-12);
+}
+
+@media (max-width: 640px) {
+  .feature-card-wide {
+    grid-column: auto;
+  }
+}
+
 .feature-list-item {
   display: flex;
   align-items: center;

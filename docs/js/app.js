@@ -76,7 +76,7 @@
     const REPO_OWNER = 'gokuthug1';
     const REPO_NAME = 'GokuTrap';
     const API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`;
-    const FALLBACK_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/download/v3.1.2/GokuTrap.exe`;
+    const FALLBACK_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/download/v3.2.0/GokuTrap.exe`;
 
     try {
       const response = await fetch(API_URL);
@@ -89,7 +89,7 @@
       state.releaseData = data;
 
       // Update UI with real release metadata
-      const tagName = data.tag_name || 'v3.1.2';
+      const tagName = data.tag_name || 'v3.2.0';
       tagEl.textContent = tagName;
       noteEl.textContent = `Latest stable Windows release (${data.name || tagName})`;
 
@@ -114,8 +114,8 @@
       }
     } catch (err) {
       // Graceful fallback without fabricating data
-      tagEl.textContent = 'v3.1.2';
-      noteEl.textContent = 'Direct installer available (v3.1.2)';
+      tagEl.textContent = 'v3.2.0';
+      noteEl.textContent = 'Direct installer available (v3.2.0)';
       if (heroBtn) {
         heroBtn.href = FALLBACK_URL;
         heroBtn.setAttribute('download', 'GokuTrap.exe');
