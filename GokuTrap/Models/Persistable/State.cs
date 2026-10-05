@@ -16,6 +16,11 @@ namespace GokuTrap.Models.Persistable
 
         public bool ForceReinstall { get; set; } = false;
 
+        public DateTimeOffset? LastUpdateCheckUtc { get; set; }
+        public long? LastKnownPlaceId { get; set; }
+        public DateTimeOffset? LastKnownPlaceUtc { get; set; }
+        public string? LastKnownJobId { get; set; }
+
         public WindowState SettingsWindow { get; set; } = new();
 
         #region Deprecated properties

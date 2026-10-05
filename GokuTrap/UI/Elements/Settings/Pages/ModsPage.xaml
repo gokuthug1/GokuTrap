@@ -6,6 +6,7 @@
       xmlns:models="clr-namespace:GokuTrap.UI.ViewModels"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:resources="clr-namespace:GokuTrap.Resources"
+      xmlns:local="clr-namespace:GokuTrap"
       xmlns:controls="clr-namespace:GokuTrap.UI.Elements.Controls"
       xmlns:dmodels="clr-namespace:GokuTrap.UI.ViewModels.Settings"
       mc:Ignorable="d"
@@ -47,6 +48,13 @@
                 </StackPanel>
             </ui:CardAction>
         </Grid>
+
+        <ui:CardAction Margin="0,12,0,0" Icon="MusicNote224" Click="OpenSoundPacks">
+            <StackPanel>
+                <TextBlock Text="{x:Static local:FeatureText.SoundsTitle}" />
+                <TextBlock Text="{x:Static local:FeatureText.SoundsHelp}" TextWrapping="Wrap" FontSize="12" />
+            </StackPanel>
+        </ui:CardAction>
 
         <TextBlock Text="{x:Static resources:Strings.Common_Presets}" FontSize="20" FontWeight="Medium" Margin="0,16,0,0" />
 

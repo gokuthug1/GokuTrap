@@ -5,4 +5,11 @@
 
     [JsonPropertyName("name")]
     public string Name { get; set; } = null!;
+
+    [JsonPropertyName("size")]
+    public long Size { get; set; }
+
+    // GitHub returns a value such as "sha256:..." when a release asset digest is available.
+    [JsonPropertyName("digest")]
+    public string? Digest { get; set; }
 }

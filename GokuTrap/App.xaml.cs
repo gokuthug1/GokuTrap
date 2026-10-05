@@ -66,6 +66,16 @@ namespace GokuTrap
 
         public static readonly CookiesManager Cookies = new();
 
+        // These services have no network credentials and keep all process/window changes
+        // scoped to the Roblox Player process managed by this instance.
+        public static readonly SaiyanPerformanceManager SaiyanMode = new();
+        public static readonly SoundPackManager SoundPacks = new();
+        public static readonly AccountProfileManager Accounts = new();
+        public static readonly FastFlagCatalogManager FastFlagCatalog = new();
+        public static readonly DatacenterRadarService DatacenterRadar = new();
+        public static readonly OverlayService Overlay = new();
+        public static readonly ApplicationUpdateService Updates = new();
+
         public static readonly HttpClient HttpClient = new(
             new HttpClientLoggingHandler(
                 new HttpClientHandler { AutomaticDecompression = DecompressionMethods.All }
@@ -82,6 +92,7 @@ namespace GokuTrap
 
             Logger.WriteLine("App::Terminate", $"Terminating with exit code {exitCodeNum} ({exitCode})");
 
+            CleanupFeatures();
             Environment.Exit(exitCodeNum);
         }
 
@@ -136,14 +147,28 @@ namespace GokuTrap
             Terminate(ErrorCode.ERROR_INSTALL_FAILURE);
         }
 
-        public static async Task<GithubRelease?> GetLatestRelease()
+        private static void CleanupFeatures()
+        {
+            SaiyanMode.Dispose();
+            Overlay.Dispose();
+            Cookies.Clear();
+            Current?.Dispatcher.Invoke(SoundPacks.Dispose);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            CleanupFeatures();
+            base.OnExit(e);
+        }
+
+        public static async Task<GithubRelease?> GetLatestRelease(CancellationToken cancellationToken = default)
         {
             const string LOG_IDENT = "App::GetLatestRelease";
 
             try
             {
                 Uri githubReleasesUrl = new($"https://api.github.com/repos/{ProjectRepository}/releases/latest");
-                var releaseInfo = await Http.GetJson<GithubRelease>(githubReleasesUrl);
+                var releaseInfo = await Http.GetJson<GithubRelease>(githubReleasesUrl, cancellationToken);
 
                 if (releaseInfo is null || releaseInfo.Assets is null)
                 {
@@ -315,16 +340,19 @@ namespace GokuTrap
                 }
 
                 Settings.Load();
+                FeatureText.Normalize(Settings.Prop);
 
                 State.Load();
                 RobloxState.Load();
                 FastFlags.Load();
                 GlobalSettings.Load();
 
+                FastFlagCatalog.LoadCachedCatalog();
+
                 Logger.WriteLine(LOG_IDENT, $"Distributor: {Settings.Prop.DistributorType}");
 
                 if (Settings.Prop.AllowCookieAccess)
-                    Task.Run(Cookies.LoadCookies);
+                    Task.Run(() => Cookies.LoadCookies());
 
                 if (!Locale.SupportedLocales.ContainsKey(Settings.Prop.Locale))
                 {
@@ -342,6 +370,8 @@ namespace GokuTrap
                 WindowsRegistry.RegisterApis(); // we want to register those early on
                                                 // so we wont have any issues with bloxshade
 
+                if (!LaunchSettings.WatcherFlag.Active && !LaunchSettings.QuietFlag.Active && !LaunchSettings.BackgroundUpdaterFlag.Active && !LaunchSettings.UninstallFlag.Active)
+                    SoundPacks.PlayEvent(SoundPackTarget.LauncherStartup);
                 LaunchHandler.ProcessLaunchArgs();
             }
 

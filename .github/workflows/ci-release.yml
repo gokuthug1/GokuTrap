@@ -20,6 +20,9 @@ jobs:
     - name: Build
       run: dotnet build -c Release --no-restore
 
+    - name: Feature and WPF safety checks
+      run: dotnet run --project tests/GokuTrap.FeatureChecks -c Release --no-build -- "${{ github.workspace }}"
+
     - name: Publish
       run: dotnet publish -p:PublishSingleFile=true -p:CommitHash=${{ github.sha }} -p:CommitRef=${{ github.ref_type }}/${{ github.ref_name }} -r win-x64 -c Release --self-contained false .\GokuTrap\GokuTrap.csproj
 

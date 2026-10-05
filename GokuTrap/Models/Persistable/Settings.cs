@@ -65,5 +65,15 @@ namespace GokuTrap.Models.Persistable
 
         // mod preset configuration
         public bool UseDisableAppPatch { get; set; } = false;
+
+        // Feature settings are deliberately opt-in.  Keeping them as nested objects means
+        // installations that predate these features deserialize with their safe defaults.
+        public SaiyanModeSettings SaiyanMode { get; set; } = new();
+        public OverlaySettings Overlay { get; set; } = new();
+        public List<SoundPackSlot> SoundPacks { get; set; } = new();
+        public List<AccountProfile> AccountProfiles { get; set; } = new();
+        public string? SelectedAccountProfileId { get; set; }
+        public FastFlagCatalogSettings FastFlagCatalog { get; set; } = new();
+        public UpdateSettings Update { get; set; } = new();
     }
 }

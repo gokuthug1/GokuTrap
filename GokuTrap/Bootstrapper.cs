@@ -931,7 +931,9 @@ namespace GokuTrap
                     autoclosePids.Add(pid);
             }
 
-            if (App.Settings.Prop.EnableActivityTracking || App.Settings.Prop.EnableWindowManipulation || App.LaunchSettings.TestModeFlag.Active || autoclosePids.Any())
+            App.SoundPacks.PlayEvent(SoundPackTarget.LauncherLaunchSucceeded);
+
+            if (App.Settings.Prop.SaiyanMode.Enabled || App.Settings.Prop.Overlay.Enabled || App.Settings.Prop.EnableActivityTracking || App.Settings.Prop.EnableWindowManipulation || App.LaunchSettings.TestModeFlag.Active || autoclosePids.Any())
             {
                 using var ipl = new InterProcessLock("Watcher", TimeSpan.FromSeconds(5));
 
@@ -1036,98 +1038,12 @@ namespace GokuTrap
                 return false;
             }
 
-            App.Logger.WriteLine(LOG_IDENT, "Checking for updates...");
-
-#if !DEBUG_UPDATER
-            var releaseInfo = await App.GetLatestRelease();
-
-            if (releaseInfo is null)
-                return false;
-
-            var versionComparison = Utilities.CompareVersions(App.Version, releaseInfo.TagName);
-
-            // check if we aren't using a deployed build, so we can update to one if a new version comes out
-            if (App.IsProductionBuild && versionComparison == VersionComparison.Equal || versionComparison == VersionComparison.GreaterThan)
-            {
-                App.Logger.WriteLine(LOG_IDENT, "No updates found");
-                return false;
-            }
-
-            if (Dialog is not null)
-                Dialog.CancelEnabled = false;
-
-            string version = releaseInfo.TagName;
-#else
-            string version = App.Version;
-#endif
-
+            var update = await App.Updates.CheckAsync(cancellationToken: _cancelTokenSource.Token);
+            if (update is null || App.LaunchSettings.QuietFlag.Active) return false;
+            if (Frontend.ShowMessageBox(string.Format(FeatureText.Get("UpdateConfirm"), update.Release.TagName),
+                MessageBoxImage.Question, MessageBoxButton.YesNo) != MessageBoxResult.Yes) return false;
             SetStatus(Strings.Bootstrapper_Status_UpgradingGokuTrap);
-
-            try
-            {
-#if DEBUG_UPDATER
-                string downloadLocation = Path.Combine(Paths.TempUpdates, "GokuTrap.exe");
-
-                Directory.CreateDirectory(Paths.TempUpdates);
-
-                File.Copy(Paths.Process, downloadLocation, true);
-#else
-                var asset = releaseInfo.Assets![0];
-
-                string downloadLocation = Path.Combine(Paths.TempUpdates, asset.Name);
-
-                Directory.CreateDirectory(Paths.TempUpdates);
-
-                App.Logger.WriteLine(LOG_IDENT, $"Downloading {releaseInfo.TagName}...");
-
-                if (!File.Exists(downloadLocation))
-                {
-                    var response = await App.HttpClient.GetAsync(asset.BrowserDownloadUrl);
-
-                    await using var fileStream = new FileStream(downloadLocation, FileMode.OpenOrCreate, FileAccess.Write);
-                    await response.Content.CopyToAsync(fileStream);
-                }
-#endif
-
-                App.Logger.WriteLine(LOG_IDENT, $"Starting {version}...");
-
-                ProcessStartInfo startInfo = new()
-                {
-                    FileName = downloadLocation,
-                };
-
-                startInfo.ArgumentList.Add("-upgrade");
-
-                foreach (string arg in App.LaunchSettings.Args)
-                    startInfo.ArgumentList.Add(arg);
-
-                if (_launchMode == LaunchMode.Player && !startInfo.ArgumentList.Contains("-player"))
-                    startInfo.ArgumentList.Add("-player");
-                else if (_launchMode == LaunchMode.Studio && !startInfo.ArgumentList.Contains("-studio"))
-                    startInfo.ArgumentList.Add("-studio");
-
-                App.Settings.Save();
-
-                new InterProcessLock("AutoUpdater");
-
-                Process.Start(startInfo);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                App.Logger.WriteLine(LOG_IDENT, "An exception occurred when running the auto-updater");
-                App.Logger.WriteException(LOG_IDENT, ex);
-
-                Frontend.ShowMessageBox(
-                    string.Format(Strings.Bootstrapper_AutoUpdateFailed, version),
-                    MessageBoxImage.Information
-                );
-
-                Utilities.ShellExecute(App.ProjectDownloadLink);
-            }
-
-            return false;
+            return await App.Updates.DownloadAndStartAsync(update, _launchMode, App.LaunchSettings.Args, _cancelTokenSource.Token);
         }
         #endregion
 
@@ -1504,6 +1420,7 @@ namespace GokuTrap
             List<string> modFolderFiles = new();
 
             Directory.CreateDirectory(Paths.Modifications);
+            App.SoundPacks.Apply();
 
             // check custom font mod
             // instead of replacing the fonts themselves, we'll just alter the font family manifests

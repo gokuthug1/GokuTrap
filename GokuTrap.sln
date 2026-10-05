@@ -7,12 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokuTrap", "GokuTrap\GokuTr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf.Ui", "wpfui\src\Wpf.Ui\Wpf.Ui.csproj", "{1ADC87D1-8963-4100-845A-18477824718E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokuTrap.FeatureChecks", "tests\GokuTrap.FeatureChecks\GokuTrap.FeatureChecks.csproj", "{B2A3A097-86E3-4F18-98FD-C0A8E82413B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2A3A097-86E3-4F18-98FD-C0A8E82413B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A3A097-86E3-4F18-98FD-C0A8E82413B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A3A097-86E3-4F18-98FD-C0A8E82413B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A3A097-86E3-4F18-98FD-C0A8E82413B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D75146E-DA24-4B05-B6C9-250C8F81B0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D75146E-DA24-4B05-B6C9-250C8F81B0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D75146E-DA24-4B05-B6C9-250C8F81B0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,169 @@
+<ui:UiPage x:Class="GokuTrap.UI.Elements.Settings.Pages.FeatureToolsPage"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" Title="FeatureTools" Scrollable="True">
+ <ui:UiPage.Resources>
+  <DataTemplate x:Key="FeatureEnumTemplate"><TextBlock Text="{Binding Converter={StaticResource EnumNameConverter}}"/></DataTemplate>
+ </ui:UiPage.Resources>
+ <StackPanel Margin="0,0,14,14">
+  <TextBlock Text="{Binding Text[ToolsHelp]}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+  <Border BorderBrush="{DynamicResource TextFillColorSecondaryBrush}" BorderThickness="1" Padding="10" CornerRadius="5">
+   <StackPanel>
+    <TextBlock Text="{Binding Status}" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite"/>
+    <ProgressBar IsIndeterminate="{Binding IsBusy}" Height="3" Margin="0,6,0,0"/>
+    <Button Content="{Binding Text[Cancel]}" Command="{Binding CancelCommand}" HorizontalAlignment="Right"/>
+   </StackPanel>
+  </Border>
+  <TabControl x:Name="FeatureTabs" Margin="0,12,0,0" IsEnabled="{Binding CanAct}">
+   <TabItem Header="{Binding Text[SaiyanTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[SaiyanHelp]}" TextWrapping="Wrap"/>
+     <CheckBox Content="{Binding Text[EnableSaiyan]}" IsChecked="{Binding Settings.SaiyanMode.Enabled}" Margin="0,10"/>
+     <TextBlock Text="{Binding Text[Priority]}"/>
+     <ComboBox ItemsSource="{Binding Priorities}" ItemTemplate="{StaticResource FeatureEnumTemplate}" SelectedItem="{Binding Settings.SaiyanMode.Priority}" AutomationProperties.Name="{Binding Text[Priority]}"/>
+     <TextBlock Text="{Binding Text[PriorityHelp]}" TextWrapping="Wrap" Margin="0,6,0,12"/>
+     <TextBlock Text="{Binding Topology}" TextWrapping="Wrap"/>
+     <CheckBox Content="{Binding Text[AutomaticAffinity]}" IsEnabled="{Binding AutomaticAffinityAvailable}" IsChecked="{Binding Settings.SaiyanMode.AutomaticEfficiencySelection}" Margin="0,8"/>
+     <TextBlock Text="{Binding Text[AffinityHelp]}" TextWrapping="Wrap"/>
+     <TextBox Text="{Binding Affinity, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="{Binding Text[Affinity]}" Margin="0,6"/>
+     <WrapPanel>
+      <Button Content="{Binding Text[ApplyPolicy]}" Command="{Binding ApplyPolicyCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[ResetPolicy]}" Command="{Binding ResetPolicyCommand}"/>
+     </WrapPanel>
+     <TextBlock Text="{Binding Text[MemoryTitle]}" FontSize="18" Margin="0,18,0,8"/>
+     <TextBlock Text="{Binding Text[MemoryHelp]}" TextWrapping="Wrap"/>
+     <ListBox ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}" DisplayMemberPath="Summary" MaxHeight="140" Margin="0,8" AutomationProperties.Name="{Binding Text[MemoryTitle]}"/>
+     <WrapPanel>
+      <Button Content="{Binding Text[Measure]}" Command="{Binding MeasureCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[Trim]}" Command="{Binding TrimCommand}"/>
+     </WrapPanel>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[SoundsTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[SoundsHelp]}" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding Text[SoundTheme]}" FontWeight="Bold" Margin="0,10" TextWrapping="Wrap"/>
+     <ComboBox ItemsSource="{Binding SoundTargets}" ItemTemplate="{StaticResource FeatureEnumTemplate}" SelectedItem="{Binding SoundTarget}" AutomationProperties.Name="{Binding Text[SoundTarget]}"/>
+     <Button Content="{Binding Text[ImportSound]}" Command="{Binding ImportSoundCommand}" Margin="0,8" HorizontalAlignment="Left"/>
+     <ListBox ItemsSource="{Binding Sounds}" SelectedItem="{Binding SelectedSound}" MaxHeight="240" AutomationProperties.Name="{Binding Text[SoundsTitle]}">
+      <ListBox.ItemTemplate><DataTemplate><StackPanel>
+       <CheckBox IsChecked="{Binding Enabled}" Content="{Binding Name}"/>
+       <TextBlock Text="{Binding SourceFileName}"/>
+       <TextBlock Text="{Binding Target, Converter={StaticResource EnumNameConverter}}" FontSize="12"/>
+      </StackPanel></DataTemplate></ListBox.ItemTemplate>
+     </ListBox>
+     <WrapPanel Margin="0,10">
+      <Button Content="{Binding Text[Preview]}" Command="{Binding PreviewSoundCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[SaveSounds]}" Command="{Binding SaveSoundsCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[RestoreSound]}" Command="{Binding RemoveSoundCommand}"/>
+     </WrapPanel>
+     <TextBlock Text="{Binding Text[SoundLimits]}" TextWrapping="Wrap"/>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[AccountsTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[AccountsHelp]}" TextWrapping="Wrap"/>
+     <CheckBox Content="{Binding Text[CookieOptIn]}" IsChecked="{Binding CookieAccess}" Margin="0,10"/>
+     <TextBlock Text="{Binding ActiveAccount}" FontWeight="Bold" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding SelectedProfile}" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding AccountStatus}" TextWrapping="Wrap" Margin="0,6"/>
+     <WrapPanel>
+      <Button Content="{Binding Text[AddCurrentAccount]}" Command="{Binding AddAccountCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[RefreshAccounts]}" Command="{Binding RefreshAccountsCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[SignIn]}" Command="{Binding SignInCommand}"/>
+     </WrapPanel>
+     <TextBlock Text="{Binding Text[PublicAccountId]}" Margin="0,10,0,4"/>
+     <TextBox Text="{Binding AccountUserId, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="{Binding Text[PublicAccountId]}"/>
+     <Button Content="{Binding Text[AddPublicAccount]}" Command="{Binding AddPublicAccountCommand}" HorizontalAlignment="Left" Margin="0,6"/>
+     <ListBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" MaxHeight="240" AutomationProperties.Name="{Binding Text[AccountsTitle]}">
+      <ListBox.ItemTemplate><DataTemplate><StackPanel Orientation="Horizontal" Margin="4">
+       <Image Source="{Binding AvatarThumbnailUrl}" Width="48" Height="48" Margin="0,0,10,0"/>
+       <StackPanel>
+        <TextBlock Text="{Binding DisplayName}" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Nickname}"/>
+        <TextBlock Text="{Binding RobloxUserId}"/>
+        <TextBlock Text="{Binding LastValidatedUtc}" FontSize="11"/>
+        <TextBlock Text="{Binding StatusLabel}" FontSize="11"/>
+       </StackPanel>
+      </StackPanel></DataTemplate></ListBox.ItemTemplate>
+     </ListBox>
+     <TextBlock Text="{Binding Text[Nickname]}" Margin="0,10,0,4"/>
+     <TextBox Text="{Binding AccountNickname, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="{Binding Text[Nickname]}"/>
+     <WrapPanel Margin="0,8">
+      <Button Content="{Binding Text[SelectProfile]}" Command="{Binding SelectAccountCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[RenameProfile]}" Command="{Binding RenameAccountCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[RemoveProfile]}" Command="{Binding RemoveAccountCommand}"/>
+     </WrapPanel>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[CatalogTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[CatalogHelp]}" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding CatalogMetadata}" TextWrapping="Wrap" Margin="0,8"/>
+     <Button Content="{Binding Text[RefreshCatalog]}" Command="{Binding RefreshCatalogCommand}" HorizontalAlignment="Left"/>
+     <ComboBox ItemsSource="{Binding Presets}" SelectedItem="{Binding SelectedPreset}" DisplayMemberPath="Title" AutomationProperties.Name="{Binding Text[CatalogTitle]}" Margin="0,8"/>
+     <TextBlock Text="{Binding SelectedPreset.Description}" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding SelectedPreset.CompatibilityNotice}" TextWrapping="Wrap" Margin="0,8"/>
+     <ListBox ItemsSource="{Binding Changes}" DisplayMemberPath="Summary" MaxHeight="220" AutomationProperties.Name="{Binding Text[Preview]}"/>
+     <WrapPanel Margin="0,10">
+      <Button Content="{Binding Text[ApplyPreset]}" Command="{Binding ApplyPresetCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[RevertPreset]}" Command="{Binding RevertPresetCommand}"/>
+     </WrapPanel>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[RadarTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[RadarHelp]}" TextWrapping="Wrap"/>
+     <ListBox ItemsSource="{Binding Regions}" SelectedItem="{Binding SelectedRegion}" DisplayMemberPath="Summary" Margin="0,12" AutomationProperties.Name="{Binding Text[RadarTitle]}"/>
+     <Button Content="{Binding Text[RefreshRadar]}" Command="{Binding RefreshRadarCommand}" HorizontalAlignment="Left"/>
+     <TextBlock Text="{Binding Text[RadarHopHelp]}" TextWrapping="Wrap" Margin="0,12"/>
+     <Button Content="{Binding Text[FindServer]}" Command="{Binding HopCommand}" HorizontalAlignment="Left"/>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[OverlayTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[OverlayHelp]}" TextWrapping="Wrap"/>
+     <CheckBox Content="{Binding Text[EnableOverlay]}" IsChecked="{Binding Settings.Overlay.Enabled}" Margin="0,10"/>
+     <TextBlock Text="{Binding Text[OverlayStyle]}"/>
+     <ComboBox ItemsSource="{Binding OverlayStyles}" ItemTemplate="{StaticResource FeatureEnumTemplate}" SelectedItem="{Binding Settings.Overlay.Style}" AutomationProperties.Name="{Binding Text[OverlayStyle]}"/>
+     <TextBlock Text="{Binding Text[OverlayColor]}" Margin="0,10,0,4"/>
+     <TextBox Text="{Binding Settings.Overlay.Color}" AutomationProperties.Name="{Binding Text[OverlayColor]}"/>
+     <TextBlock Text="{Binding Text[OverlaySize]}" Margin="0,10,0,4"/>
+     <Slider Minimum="6" Maximum="96" Value="{Binding Settings.Overlay.Size}" AutomationProperties.Name="{Binding Text[OverlaySize]}"/>
+     <TextBlock Text="{Binding Text[OverlayOpacity]}" Margin="0,10,0,4"/>
+     <Slider Minimum="0.1" Maximum="1" Value="{Binding Settings.Overlay.Opacity}" AutomationProperties.Name="{Binding Text[OverlayOpacity]}"/>
+     <TextBlock Text="{Binding Text[OverlayOffset]}" Margin="0,10,0,4"/>
+     <Slider Minimum="-500" Maximum="500" Value="{Binding Settings.Overlay.OffsetX}" AutomationProperties.Name="{Binding Text[OffsetX]}"/>
+     <Slider Minimum="-500" Maximum="500" Value="{Binding Settings.Overlay.OffsetY}" AutomationProperties.Name="{Binding Text[OffsetY]}"/>
+     <TextBlock Text="{Binding Text[OverlayHotkey]}" Margin="0,10,0,4"/>
+     <TextBox Text="{Binding Settings.Overlay.ToggleHotkey}" AutomationProperties.Name="{Binding Text[OverlayHotkey]}"/>
+     <CheckBox Content="{Binding Text[ShowTelemetry]}" IsChecked="{Binding Settings.Overlay.ShowTelemetry}" Margin="0,10"/>
+     <WrapPanel>
+      <Button Content="{Binding Text[ApplyOverlay]}" Command="{Binding ApplyOverlayCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[HideOverlay]}" Command="{Binding HideOverlayCommand}"/>
+     </WrapPanel>
+    </StackPanel>
+   </TabItem>
+   <TabItem Header="{Binding Text[UpdatesTitle]}">
+    <StackPanel Margin="12">
+     <TextBlock Text="{Binding Text[UpdatesHelp]}" TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding CurrentVersion}" Margin="0,8"/>
+     <TextBlock Text="{Binding AvailableVersion}" FontWeight="Bold"/>
+     <CheckBox Content="{Binding Text[CheckAutomatically]}" IsChecked="{Binding Settings.CheckForUpdates}" Margin="0,10"/>
+     <CheckBox Content="{Binding Text[IncludePrerelease]}" IsChecked="{Binding Settings.Update.IncludePrerelease}"/>
+     <TextBlock Text="{Binding Text[UpdateCadence]}" Margin="0,10,0,4"/>
+     <TextBox Text="{Binding Settings.Update.CheckIntervalHours}" AutomationProperties.Name="{Binding Text[UpdateCadence]}"/>
+     <Button Content="{Binding Text[SaveOptions]}" Command="{Binding SaveUpdateOptionsCommand}" Margin="0,8" HorizontalAlignment="Left"/>
+     <TextBlock Text="{Binding UpdateStatus}" TextWrapping="Wrap" Margin="0,8"/>
+     <ProgressBar Value="{Binding UpdateProgress, Mode=OneWay}" Maximum="100" Height="8"/>
+     <WrapPanel Margin="0,10">
+      <Button Content="{Binding Text[CheckUpdates]}" Command="{Binding CheckUpdatesCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[InstallUpdate]}" Command="{Binding InstallUpdateCommand}" Margin="0,0,8,0"/>
+      <Button Content="{Binding Text[Recovery]}" Command="{Binding RestoreUpdateCommand}"/>
+     </WrapPanel>
+     <TextBlock Text="{Binding Text[ReleaseNotes]}" FontSize="18" Margin="0,10"/>
+     <TextBox Text="{Binding ReleaseNotes, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="200" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="{Binding Text[ReleaseNotes]}"/>
+    </StackPanel>
+   </TabItem>
+  </TabControl>
+ </StackPanel>
+</ui:UiPage>

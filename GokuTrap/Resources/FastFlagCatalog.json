@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-10-05.1",
+  "presets": [
+    {
+      "id": "competitive-low-latency",
+      "title": "Competitive / Low Latency",
+      "description": "Lower anti-aliasing and moderate render quality. Visual overhead only: no network latency or FPS guarantee.",
+      "compatibilityNotice": "Published Roblox local allowlist reviewed 2026-10-05. MSAA and quality override behavior depends on renderer/client. May be ignored or removed; test visuals after restart.",
+      "flags": { "FIntDebugForceMSAASamples": "1", "DFIntDebugFRMQualityLevelOverride": "8" }
+    },
+    {
+      "id": "cinematic-high-fidelity",
+      "title": "Cinematic / High Fidelity",
+      "description": "Higher anti-aliasing and render quality; may increase GPU work. Networking unchanged.",
+      "compatibilityNotice": "Published Roblox local allowlist reviewed 2026-10-05. MSAA and quality override behavior depends on renderer/client. May be ignored or removed; test visuals after restart.",
+      "flags": { "FIntDebugForceMSAASamples": "4", "DFIntDebugFRMQualityLevelOverride": "21" }
+    },
+    {
+      "id": "potato-power-saver",
+      "title": "Potato PC / Power Saver",
+      "description": "Minimal configured render quality and anti-aliasing. No measured power saving or FPS promise.",
+      "compatibilityNotice": "Published Roblox local allowlist reviewed 2026-10-05. MSAA and quality override behavior depends on renderer/client. May be ignored or removed; test visuals after restart.",
+      "flags": { "FIntDebugForceMSAASamples": "1", "DFIntDebugFRMQualityLevelOverride": "1" }
+    }
+  ]
+}

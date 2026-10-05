@@ -25,6 +25,9 @@
         public static string Versions { get; private set; } = "";
         public static string Modifications { get; private set; } = "";
         public static string CustomThemes { get; private set; } = "";
+        public static string SoundPacks { get; private set; } = "";
+        public static string FastFlagCatalog { get; private set; } = "";
+        public static string PlayerActivity => Path.Combine(Base, "PlayerActivity.json");
 
         // cleaner paths
         public static string RobloxCache => Path.Combine(Roblox, "rbx-storage");
@@ -50,6 +53,8 @@
             Versions = Path.Combine(Base, "Versions");
             Modifications = Path.Combine(Base, "Modifications");
             CustomThemes = Path.Combine(Base, "CustomThemes");
+            SoundPacks = Path.Combine(Base, "SoundPacks");
+            FastFlagCatalog = Path.Combine(Base, "FastFlagCatalog.json");
 
             // "studio is still using the old path," return said. -Naveandice
             RobloxStudioCache = Path.Combine(Path.GetTempPath(), "Roblox");

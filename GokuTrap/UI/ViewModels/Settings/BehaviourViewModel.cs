@@ -17,7 +17,9 @@
             {
                 App.Settings.Prop.AllowCookieAccess = value;
                 if (value)
-                    Task.Run(App.Cookies.LoadCookies);
+                    Task.Run(() => App.Cookies.LoadCookies());
+                else
+                    App.Cookies.Clear();
 
                 OnPropertyChanged(nameof(CookieAccess));
             }

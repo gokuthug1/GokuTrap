@@ -1896,4 +1896,194 @@ Agreeing VNGGames terms could cause irreversible changes to your Roblox account.
 
 Press cancel to go back.</value>
   </data>
+  <data name="Features_ToolsTitle" xml:space="preserve"><value>Saiyan &amp; feature tools</value></data>
+  <data name="Features_ToolsHelp" xml:space="preserve"><value>Optional, reversible tools. Apply buttons save their own settings immediately. Other launcher settings still use Save.</value></data>
+  <data name="Features_SaiyanTitle" xml:space="preserve"><value>Saiyan Mode</value></data>
+  <data name="Features_SaiyanHelp" xml:space="preserve"><value>Only verified installed Roblox Player processes are managed. All running Player instances are handled intentionally; no launcher or unrelated process is changed. Original policy is restored on disable or manager shutdown.</value></data>
+  <data name="Features_EnableSaiyan" xml:space="preserve"><value>Enable scheduling policy (off by default)</value></data>
+  <data name="Features_Priority" xml:space="preserve"><value>Roblox process priority</value></data>
+  <data name="Features_PriorityHelp" xml:space="preserve"><value>WindowsDefault preserves the original scheduler policy. AboveNormal is conservative; High is advanced and may starve other applications. Neither guarantees higher FPS.</value></data>
+  <data name="Features_HighWarning" xml:space="preserve"><value>High priority may make audio, desktop and other applications less responsive. Apply this advanced policy only if you understand the scheduling tradeoff?</value></data>
+  <data name="Features_AutomaticAffinity" xml:space="preserve"><value>Prefer faster Windows-reported efficiency classes (only when distinct classes exist)</value></data>
+  <data name="Features_Affinity" xml:space="preserve"><value>Advanced CPU affinity mask</value></data>
+  <data name="Features_AffinityHelp" xml:space="preserve"><value>Optional hexadecimal mask: bit 0 = logical CPU 0, bit 1 = CPU 1. For example 3 selects CPUs 0 and 1. Blank restores original affinity. Unsupported processor groups disable this feature. No AMD X3D CCD placement is inferred.</value></data>
+  <data name="Features_AffinityInvalid" xml:space="preserve"><value>Enter a nonzero hexadecimal mask containing only detected, available CPUs, or leave it blank for Windows defaults.</value></data>
+  <data name="Features_ApplyPolicy" xml:space="preserve"><value>Save &amp; apply policy</value></data>
+  <data name="Features_ResetPolicy" xml:space="preserve"><value>Reset to Windows defaults</value></data>
+  <data name="Features_WindowsDefaults" xml:space="preserve"><value>Management disabled or original Windows policy restored.</value></data>
+  <data name="Features_PolicyApplied" xml:space="preserve"><value>Policy applied to verified Roblox Player (PID {0}).</value></data>
+  <data name="Features_PolicyDenied" xml:space="preserve"><value>Windows denied or could not perform the action. No elevation was requested; Roblox can continue normally.</value></data>
+  <data name="Features_RestoreDenied" xml:space="preserve"><value>Windows denied restoration for a still-running process; the manager will retry. Restart Roblox to recover its normal policy.</value></data>
+  <data name="Features_NoPlayer" xml:space="preserve"><value>No accessible installed Roblox Player instance was found.</value></data>
+  <data name="Features_TopologySummary" xml:space="preserve"><value>Windows CPU topology: {0} logical CPUs, {1} cores, {2} groups. {3}</value></data>
+  <data name="Features_TopologyUnsupported" xml:space="preserve"><value>Confidence unavailable or multiple groups: manual/automatic affinity unsupported.</value></data>
+  <data name="Features_TopologyUniform" xml:space="preserve"><value>OS topology available; no distinct efficiency classes. Automatic performance-core selection unavailable.</value></data>
+  <data name="Features_TopologyHeterogeneous" xml:space="preserve"><value>OS topology and distinct efficiency classes available; higher class = faster, less power efficient. No cache-CCD inference.</value></data>
+  <data name="Features_MemoryTitle" xml:space="preserve"><value>Working-set diagnostics</value></data>
+  <data name="Features_MemoryHelp" xml:space="preserve"><value>Working set is resident RAM; private bytes are committed private memory, not FPS. Manual EmptyWorkingSet may cause paging and stutter. No injection, garbage collection, private-heap compaction, scene detection or automatic cleaner is performed.</value></data>
+  <data name="Features_MemorySample" xml:space="preserve"><value>PID {0}: working set {1} MiB / private bytes {2} MiB</value></data>
+  <data name="Features_MemoryMeasured" xml:space="preserve"><value>Memory sampled now. Select one Player before trimming.</value></data>
+  <data name="Features_Measure" xml:space="preserve"><value>Measure memory</value></data>
+  <data name="Features_Trim" xml:space="preserve"><value>Trim selected working set…</value></data>
+  <data name="Features_TrimWarning" xml:space="preserve"><value>Remove resident pages from the selected Player's working set? Pages may immediately return, and paging may cause stutter. This does not compact the heap or free all allocated memory.</value></data>
+  <data name="Features_TrimSucceeded" xml:space="preserve"><value>Windows accepted the one-time working-set trim. No performance improvement is implied.</value></data>
+  <data name="Features_SoundsTitle" xml:space="preserve"><value>Sound packs</value></data>
+  <data name="Features_SoundsHelp" xml:space="preserve"><value>Import audio you have rights to use. Managed copies remain local; no copyrighted recordings are included or downloaded. Character slots use the existing Mods apply/restore system.</value></data>
+  <data name="Features_SoundTheme" xml:space="preserve"><value>Instant Transmission / Super Saiyan: theme definition only. Supply your own licensed startup ambience, launch-success cue, or action-slot audio.</value></data>
+  <data name="Features_SoundTarget" xml:space="preserve"><value>Sound slot</value></data>
+  <data name="Features_ImportSound" xml:space="preserve"><value>Browse &amp; import audio…</value></data>
+  <data name="Features_SaveSounds" xml:space="preserve"><value>Save enabled slots</value></data>
+  <data name="Features_RestoreSound" xml:space="preserve"><value>Remove &amp; restore original</value></data>
+  <data name="Features_SoundLimits" xml:space="preserve"><value>One asset per slot, at most 20 MiB. Client .mp3 slots require MP3; launcher slots accept MP3/WAV/OGG/M4A, with preview depending on installed Windows codecs. Formats are not converted. Unrelated mods are never overwritten. Disable/remove restores on the next client launch. Respawn, teleport and hit-specific cues are unavailable; experiences may override character audio.</value></data>
+  <data name="Features_SoundInvalid" xml:space="preserve"><value>Audio must be readable, have a recognized format header, and be between 1 byte and 20 MiB.</value></data>
+  <data name="Features_SoundFormats" xml:space="preserve"><value>Use MP3 for character slots. Launcher slots accept MP3, WAV, OGG or M4A.</value></data>
+  <data name="Features_SoundSlotOccupied" xml:space="preserve"><value>This slot already has an asset. Remove it before importing a replacement.</value></data>
+  <data name="Features_AudioFilter" xml:space="preserve"><value>Audio files|*.mp3;*.wav;*.ogg;*.m4a</value></data>
+  <data name="Features_SoundImported" xml:space="preserve"><value>Local audio copied and saved. Character assets apply on the next launch.</value></data>
+  <data name="Features_SoundPreview" xml:space="preserve"><value>Preview requested. If silent, the Windows decoder may not support this codec; use MP3 or WAV. No game event is simulated.</value></data>
+  <data name="Features_SoundsSaved" xml:space="preserve"><value>Sound settings saved. Conflicting or missing assets are skipped without overwriting existing mods; inspect logs for diagnostics. Client changes take effect next launch.</value></data>
+  <data name="Features_SoundRestored" xml:space="preserve"><value>Managed audio removed. Original client asset restores at next launch; unrelated mods are preserved.</value></data>
+  <data name="Features_SoundStartup" xml:space="preserve"><value>Launcher startup ambience; theme definition only.</value></data>
+  <data name="Features_SoundSuccess" xml:space="preserve"><value>Launcher successfully started Player (not proof of joining an experience).</value></data>
+  <data name="Features_SoundJump" xml:space="preserve"><value>Existing action_jump.mp3 asset slot.</value></data>
+  <data name="Features_SoundFootsteps" xml:space="preserve"><value>Existing action_footsteps_plastic.mp3 asset slot.</value></data>
+  <data name="Features_SoundGetUp" xml:space="preserve"><value>Existing action_get_up.mp3 asset slot.</value></data>
+  <data name="Features_AccountsTitle" xml:space="preserve"><value>Accounts</value></data>
+  <data name="Features_AccountsHelp" xml:space="preserve"><value>Profiles contain public identity only, never credentials. Selecting a profile does not switch Roblox sessions. Seamless desktop session switching is unavailable. Sign in explicitly through Roblox, then refresh to verify the desktop identity; browser sign-in alone may not update the desktop client.</value></data>
+  <data name="Features_CookieOptIn" xml:space="preserve"><value>Allow the existing current-user DPAPI cookie reader for authenticated GokuTrap requests</value></data>
+  <data name="Features_CookieOptInRequired" xml:space="preserve"><value>Cookie access is off. Public profiles work without it; authenticated identity validation requires explicit opt-in.</value></data>
+  <data name="Features_AccountNotValidated" xml:space="preserve"><value>No authenticated desktop account validated in this session.</value></data>
+  <data name="Features_AccountAuthenticated" xml:space="preserve"><value>Desktop session validated</value></data>
+  <data name="Features_AccountUnavailable" xml:space="preserve"><value>Public profile unavailable or removed</value></data>
+  <data name="Features_SessionExpired" xml:space="preserve"><value>Desktop session is unavailable, expired or revoked. No profile is marked active. Complete official sign-in and refresh.</value></data>
+  <data name="Features_SessionValidated" xml:space="preserve"><value>Desktop identity validated: {0} (ID {1}). Selection does not change this session.</value></data>
+  <data name="Features_ActiveAccount" xml:space="preserve"><value>Validated active account</value></data>
+  <data name="Features_SelectedProfile" xml:space="preserve"><value>Selected profile (not authentication)</value></data>
+  <data name="Features_NoSelection" xml:space="preserve"><value>No profile selected.</value></data>
+  <data name="Features_AddCurrentAccount" xml:space="preserve"><value>Add current desktop account</value></data>
+  <data name="Features_RefreshAccounts" xml:space="preserve"><value>Refresh &amp; validate session</value></data>
+  <data name="Features_SignIn" xml:space="preserve"><value>Official sign-in handoff…</value></data>
+  <data name="Features_PublicAccountId" xml:space="preserve"><value>Public Roblox user ID</value></data>
+  <data name="Features_AddPublicAccount" xml:space="preserve"><value>Add public profile</value></data>
+  <data name="Features_AccountIdInvalid" xml:space="preserve"><value>Enter a positive Roblox user ID.</value></data>
+  <data name="Features_Nickname" xml:space="preserve"><value>Local profile nickname (up to 80 characters)</value></data>
+  <data name="Features_SelectProfile" xml:space="preserve"><value>Select profile</value></data>
+  <data name="Features_RenameProfile" xml:space="preserve"><value>Rename locally</value></data>
+  <data name="Features_RemoveProfile" xml:space="preserve"><value>Remove profile</value></data>
+  <data name="Features_SelectionNotAuthentication" xml:space="preserve"><value>Profile selected and saved. Roblox's authenticated session has not changed.</value></data>
+  <data name="Features_SignInConfirm" xml:space="preserve"><value>Open Roblox's official sign-in page in your browser? No account is silently signed out and no cookie store is changed. Complete desktop Roblox sign-in if needed, then use Refresh to verify identity.</value></data>
+  <data name="Features_CatalogTitle" xml:space="preserve"><value>Community Hub</value></data>
+  <data name="Features_CatalogHelp" xml:space="preserve"><value>Rendering-only curated presets. The published Roblox allowlist was reviewed 2026-10-05; support may change without notice. These values are not measured FPS/latency improvements. Preview every change. Remote catalogs are bounded, schema-validated data, never executable content.</value></data>
+  <data name="Features_RefreshCatalog" xml:space="preserve"><value>Refresh repository catalog</value></data>
+  <data name="Features_ApplyPreset" xml:space="preserve"><value>Apply previewed preset…</value></data>
+  <data name="Features_RevertPreset" xml:space="preserve"><value>Restore previous values</value></data>
+  <data name="Features_PresetConfirm" xml:space="preserve"><value>Save the previewed preset now? Unrelated flags remain unchanged. Restore previous values only undoes values that have not been manually edited since application. Restart Roblox to use the changes.</value></data>
+  <data name="Features_FlagMsaa" xml:space="preserve"><value>MSAA samples: rendering anti-aliasing request (1–4); renderer/client dependent, allowlist-reviewed 2026-10-05.</value></data>
+  <data name="Features_FlagQuality" xml:space="preserve"><value>Render quality override (1–21); client dependent, allowlist-reviewed 2026-10-05. No network settings changed.</value></data>
+  <data name="Features_Unset" xml:space="preserve"><value>unset</value></data>
+  <data name="Features_NeverRefreshed" xml:space="preserve"><value>Not remotely refreshed</value></data>
+  <data name="Features_RadarTitle" xml:space="preserve"><value>Region radar</value></data>
+  <data name="Features_RadarHelp" xml:space="preserve"><value>Roblox publishes no region-specific safe probe endpoint here. Latency, freshness and confidence are unavailable: no samples were taken. These are not in-game ping values. Automatic best-region ranking is unavailable rather than guessed.</value></data>
+  <data name="Features_RadarLatencyUnavailable" xml:space="preserve"><value>Latency unavailable • not measured</value></data>
+  <data name="Features_RadarHopHelp" xml:space="preserve"><value>Manual alternative: select a region and discover a public server with capacity in the observed place. Existing discovery is country-level only: Germany does not prove Frankfurt, Japan does not prove Tokyo, and US East/West cannot be distinguished. Confirm the country/place before leaving; Roblox decides final join success. At most one search every 30 seconds, 10-second timeout, no IP scanning.</value></data>
+  <data name="Features_RefreshRadar" xml:space="preserve"><value>Refresh availability</value></data>
+  <data name="Features_FindServer" xml:space="preserve"><value>Find &amp; confirm country server…</value></data>
+  <data name="Features_RadarUsUnavailable" xml:space="preserve"><value>US East/West cannot be distinguished by the existing country-level discovery source.</value></data>
+  <data name="Features_RadarNoContext" xml:space="preserve"><value>No recently observed public place. Join an experience with activity tracking enabled, then try again.</value></data>
+  <data name="Features_RadarCooldown" xml:space="preserve"><value>Please wait 30 seconds between server searches.</value></data>
+  <data name="Features_RadarNoServers" xml:space="preserve"><value>No matching public server with capacity was verified in the first 100 discoverable Roblox servers. Your current session is unchanged.</value></data>
+  <data name="Features_RadarFound" xml:space="preserve"><value>Country candidate cross-checked against Roblox's public server list. Confirmation required.</value></data>
+  <data name="Features_RadarUnavailable" xml:space="preserve"><value>Discovery unavailable or cancelled. Your current session was not changed.</value></data>
+  <data name="Features_RadarHopRequested" xml:space="preserve"><value>Official Roblox join handoff requested. This does not guarantee join success or city location.</value></data>
+  <data name="Features_HopConfirm" xml:space="preserve"><value>Leave your current session and request the discovered server for {0}? Discovery reports country {1}, NOT a verified city. Place: {2}. Roblox may reject a full or expired server.</value></data>
+  <data name="Features_OverlayTitle" xml:space="preserve"><value>Overlay</value></data>
+  <data name="Features_OverlayHelp" xml:space="preserve"><value>External, click-through static crosshair; no injection, graphics hook, aiming or gameplay automation. Use only where allowed by the game/platform. Only visible while Player is foreground; no exclusive-fullscreen guarantee. For multiple instances it follows one verified Player window at a time. Position offsets configure movement without intercepting gameplay input.</value></data>
+  <data name="Features_EnableOverlay" xml:space="preserve"><value>Enable external overlay (off by default)</value></data>
+  <data name="Features_OverlayStyle" xml:space="preserve"><value>Crosshair style</value></data>
+  <data name="Features_OverlayColor" xml:space="preserve"><value>Color (#RRGGBB or #AARRGGBB)</value></data>
+  <data name="Features_OverlaySize" xml:space="preserve"><value>Size (6–96 DIPs)</value></data>
+  <data name="Features_OverlayOpacity" xml:space="preserve"><value>Opacity</value></data>
+  <data name="Features_OverlayOffset" xml:space="preserve"><value>Move crosshair: horizontal / vertical offsets (DIPs)</value></data>
+  <data name="Features_OffsetX" xml:space="preserve"><value>Horizontal crosshair offset</value></data>
+  <data name="Features_OffsetY" xml:space="preserve"><value>Vertical crosshair offset</value></data>
+  <data name="Features_OverlayHotkey" xml:space="preserve"><value>Toggle hotkey (for example Ctrl+Shift+X; blank disables)</value></data>
+  <data name="Features_ShowTelemetry" xml:space="preserve"><value>Show truthful telemetry-unavailable notice</value></data>
+  <data name="Features_TelemetryUnavailable" xml:space="preserve"><value>FPS/frametime unavailable: no integrated non-invasive telemetry source.</value></data>
+  <data name="Features_ApplyOverlay" xml:space="preserve"><value>Save &amp; apply overlay…</value></data>
+  <data name="Features_HideOverlay" xml:space="preserve"><value>Hide &amp; disable now</value></data>
+  <data name="Features_OverlayWarning" xml:space="preserve"><value>Enable this external crosshair only where the game/platform permits overlays. It is not guaranteed over exclusive fullscreen. The configured global hotkey is reserved only while the overlay is active. Continue?</value></data>
+  <data name="Features_OverlayActive" xml:space="preserve"><value>External overlay configured. Visible only while its Player is foreground; exclusive fullscreen may hide it.</value></data>
+  <data name="Features_OverlayHotkeyUnavailable" xml:space="preserve"><value>Overlay configured, but toggle hotkey is disabled, invalid or already in use. Use Hide &amp; disable now to close it.</value></data>
+  <data name="Features_UpdatesTitle" xml:space="preserve"><value>Updates</value></data>
+  <data name="Features_UpdatesHelp" xml:space="preserve"><value>Existing GitHub updater for Windows x64. Published SHA-256 verifies asset consistency, not an independent publisher signature. Without a digest, only approved HTTPS transport, size and PE checks apply. Quiet mode never prompts or installs. Close other GokuTrap instances before installing.</value></data>
+  <data name="Features_CheckAutomatically" xml:space="preserve"><value>Check automatically at startup/while settings are open</value></data>
+  <data name="Features_IncludePrerelease" xml:space="preserve"><value>Include prereleases (advanced)</value></data>
+  <data name="Features_UpdateCadence" xml:space="preserve"><value>Check interval in hours (1–168)</value></data>
+  <data name="Features_SaveOptions" xml:space="preserve"><value>Save check options</value></data>
+  <data name="Features_CheckUpdates" xml:space="preserve"><value>Check for updates / retry</value></data>
+  <data name="Features_InstallUpdate" xml:space="preserve"><value>Download &amp; restart…</value></data>
+  <data name="Features_Recovery" xml:space="preserve"><value>Recovery instructions</value></data>
+  <data name="Features_ReleaseNotes" xml:space="preserve"><value>Release notes (plain text)</value></data>
+  <data name="Features_UpdateIdle" xml:space="preserve"><value>No update check has run.</value></data>
+  <data name="Features_UpdateConfirm" xml:space="preserve"><value>Download and restart into GokuTrap {0}? Your settings are preserved. The update is checked against available GitHub digest metadata, not an independent publisher signature.</value></data>
+  <data name="Features_UpdateInstallConfirm" xml:space="preserve"><value>Save settings, download the checked Windows x64 release and restart? No scripts in release notes are executed. Cancel leaves the installed executable unchanged.</value></data>
+  <data name="Features_RollbackHelp" xml:space="preserve"><value>A successful atomic upgrade keeps GokuTrap.exe.rollback in the installation folder. If the new version fails, close every GokuTrap process, rename the failed executable, and restore the .rollback file as GokuTrap.exe. User settings/data remain in place. Incomplete .download files are replaced on retry.</value></data>
+  <data name="Features_NoUpdate" xml:space="preserve"><value>No available update selected</value></data>
+  <data name="Features_Ready" xml:space="preserve"><value>Ready. Select a feature; all intrusive features default off.</value></data>
+  <data name="Features_Working" xml:space="preserve"><value>Working…</value></data>
+  <data name="Features_Cancel" xml:space="preserve"><value>Cancel current operation</value></data>
+  <data name="Features_Cancelled" xml:space="preserve"><value>Operation cancelled.</value></data>
+  <data name="Features_ActionFailed" xml:space="preserve"><value>Action could not be completed. Existing installation/session is preserved; inspect diagnostics and retry.</value></data>
+  <data name="Features_Preview" xml:space="preserve"><value>Preview</value></data>
+  <data name="Features_Saved" xml:space="preserve"><value>Settings saved.</value></data>
+  <data name="Features_Disabled" xml:space="preserve"><value>Disabled</value></data>
+  <data name="Features_UpdateBusy" xml:space="preserve"><value>Another update operation is running.</value></data>
+  <data name="Features_UpdateChecking" xml:space="preserve"><value>Checking GitHub releases…</value></data>
+  <data name="Features_UpdateInvalidRelease" xml:space="preserve"><value>No eligible valid release version was returned. Offline or rate-limited checks can be retried later.</value></data>
+  <data name="Features_UpdateCurrent" xml:space="preserve"><value>Up to date (v{0}).</value></data>
+  <data name="Features_UpdateNoAsset" xml:space="preserve"><value>A newer release has no supported Windows x64 executable asset.</value></data>
+  <data name="Features_UpdateAvailable" xml:space="preserve"><value>Version {0} available. Integrity: {1}.</value></data>
+  <data name="Features_UpdateDigest" xml:space="preserve"><value>published SHA-256 consistency digest, not an independent signature</value></data>
+  <data name="Features_UpdateNoDigest" xml:space="preserve"><value>approved GitHub HTTPS only; no digest published</value></data>
+  <data name="Features_UpdateCheckFailed" xml:space="preserve"><value>Update check failed. Offline/rate-limited use leaves the installation intact; retry later.</value></data>
+  <data name="Features_UpdateDownloading" xml:space="preserve"><value>Downloading update…</value></data>
+  <data name="Features_UpdateStarting" xml:space="preserve"><value>Staged checks passed; starting the existing upgrade handoff…</value></data>
+  <data name="Features_UpdateCancelled" xml:space="preserve"><value>Download cancelled; installed executable unchanged.</value></data>
+  <data name="Features_UpdateFailed" xml:space="preserve"><value>Download, verification or handoff failed; installed executable unchanged. Close other GokuTrap instances and retry.</value></data>
+  <data name="Features_CatalogBundled" xml:space="preserve"><value>Bundled offline catalog</value></data>
+  <data name="Features_CatalogLoaded" xml:space="preserve"><value>Bundled catalog loaded.</value></data>
+  <data name="Features_CatalogCached" xml:space="preserve"><value>Last validated repository catalog</value></data>
+  <data name="Features_CatalogCacheLoaded" xml:space="preserve"><value>Last valid catalog loaded. Refresh to check for new data.</value></data>
+  <data name="Features_CatalogRemoteDisabled" xml:space="preserve"><value>Remote data disabled; last valid catalog preserved.</value></data>
+  <data name="Features_CatalogRemote" xml:space="preserve"><value>Repository HTTPS catalog</value></data>
+  <data name="Features_CatalogRefreshed" xml:space="preserve"><value>Catalog refreshed and schema-validated.</value></data>
+  <data name="Features_CatalogCancelled" xml:space="preserve"><value>Refresh cancelled; last valid catalog preserved.</value></data>
+  <data name="Features_CatalogFailed" xml:space="preserve"><value>Catalog unavailable or invalid; last valid catalog and current flags preserved.</value></data>
+  <data name="Features_CatalogAlreadyApplied" xml:space="preserve"><value>Preset already applied; no values changed.</value></data>
+  <data name="Features_CatalogApplied" xml:space="preserve"><value>Applied {0}. Changes saved; restart Roblox to use them.</value></data>
+  <data name="Features_CatalogRestored" xml:space="preserve"><value>Previous flag values restored. Later manual edits were preserved.</value></data>
+  <data name="Features_PresetCompetitive" xml:space="preserve"><value>Competitive / Low Latency</value></data>
+  <data name="Features_PresetCompetitiveHelp" xml:space="preserve"><value>Conservative visual settings only; no network routing changes or latency/FPS guarantee.</value></data>
+  <data name="Features_PresetCinematic" xml:space="preserve"><value>Cinematic / High Fidelity</value></data>
+  <data name="Features_PresetCinematicHelp" xml:space="preserve"><value>Higher rendering quality and anti-aliasing. May increase GPU work; networking unchanged.</value></data>
+  <data name="Features_PresetPotato" xml:space="preserve"><value>Potato PC / Power Saver</value></data>
+  <data name="Features_PresetPotatoHelp" xml:space="preserve"><value>Lower rendering quality; no measured power savings or FPS promise.</value></data>
+  <data name="Features_PresetCompatibility" xml:space="preserve"><value>Roblox local allowlist reviewed 2026-10-05. Renderer/client-dependent and may be ignored or removed; test visuals after restart.</value></data>
+  <data name="Features_RuntimeSaved" xml:space="preserve"><value>Settings saved. The existing Player watcher applies/restores this policy within 5 seconds; no second runtime manager was started.</value></data>
+  <data name="Features_SoundConflicts" xml:space="preserve"><value>{0} sound slots could not be applied/restored (missing asset, permission or existing mod conflict). Unrelated modifications were preserved. Remove conflicting Mods manually only if you own them, then retry.</value></data>
+  <data name="Features_PriorityDefault" xml:space="preserve"><value>Windows defaults (preserve original)</value></data>
+  <data name="Features_PriorityAbove" xml:space="preserve"><value>Above Normal (conservative)</value></data>
+  <data name="Features_PriorityHigh" xml:space="preserve"><value>High (advanced)</value></data>
+  <data name="Features_StyleCross" xml:space="preserve"><value>Cross</value></data>
+  <data name="Features_StyleDot" xml:space="preserve"><value>Dot</value></data>
+  <data name="Features_StyleCircle" xml:space="preserve"><value>Circle</value></data>
+  <data name="Features_TargetStartup" xml:space="preserve"><value>Launcher startup ambience</value></data>
+  <data name="Features_TargetSuccess" xml:space="preserve"><value>Launcher Player-start success cue</value></data>
+  <data name="Features_TargetJump" xml:space="preserve"><value>Character action_jump asset</value></data>
+  <data name="Features_TargetFootsteps" xml:space="preserve"><value>Character action_footsteps_plastic asset</value></data>
+  <data name="Features_TargetGetUp" xml:space="preserve"><value>Character action_get_up asset</value></data>
+  <data name="Features_OverlayHotkeyInvalid" xml:space="preserve"><value>Use modifiers plus a key (for example Ctrl+Shift+X), or leave blank. Modifier-only/gameplay single-key shortcuts are not supported.</value></data>
+  <data name="Features_OverlayColorInvalid" xml:space="preserve"><value>Enter #RRGGBB or #AARRGGBB using hexadecimal digits.</value></data>
+  <data name="Features_SoundPlaybackFailed" xml:space="preserve"><value>Audio preview could not be decoded. Use a valid MP3/WAV or install an appropriate codec; the client/session was not changed.</value></data>
+  <data name="Features_SoundPlaying" xml:space="preserve"><value>Windows opened the audio preview for playback.</value></data>
 </root>

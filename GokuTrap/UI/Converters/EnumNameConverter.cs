@@ -15,7 +15,9 @@ namespace GokuTrap.UI.Converters
         {
             // https://stackoverflow.com/a/28672015/11852173
     
-            var enumVal = (Enum)value;
+            // ComboBox templates can temporarily inherit a text DataContext during unload.
+            if (value is not Enum enumVal)
+                return value?.ToString() ?? string.Empty;
             var stringVal = enumVal.ToString();
 
             var type = enumVal.GetType();

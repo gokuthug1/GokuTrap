@@ -7,6 +7,7 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:base="clr-namespace:GokuTrap.UI.Elements.Base"
              xmlns:resources="clr-namespace:GokuTrap.Resources"
+             xmlns:local="clr-namespace:GokuTrap"
              xmlns:dmodels="clr-namespace:GokuTrap.UI.ViewModels.Settings"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance dmodels:MainWindowViewModel, IsDesignTimeCreatable=True}"
@@ -54,6 +55,7 @@
             <ui:NavigationFluent x:Name="RootNavigation" Grid.Row="1" Grid.Column="0" Margin="0,0,12,0" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0">
                 <ui:NavigationFluent.Items>
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Integrations_Title}" PageType="{x:Type pages:IntegrationsPage}" Icon="Add28" Tag="integrations" />
+                    <ui:NavigationItem Content="{x:Static local:FeatureText.ToolsTitle}" PageType="{x:Type pages:FeatureToolsPage}" Icon="Settings20" Tag="featuretools" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Behaviour_Title}" PageType="{x:Type pages:BehaviourPage}" Icon="PlaySettings20" Tag="bootstrapper" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Common_Deployment}" PageType="{x:Type pages:ChannelPage}" Icon="CloudArchive20" Tag="channel" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Mods_Title}" PageType="{x:Type pages:ModsPage}" Icon="WrenchScrewdriver20" Tag="mods" />

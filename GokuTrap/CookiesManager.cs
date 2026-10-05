@@ -19,6 +19,7 @@ namespace GokuTrap
         private bool Enabled => App.Settings.Prop.AllowCookieAccess;
 
         private string AuthCookie = string.Empty;
+        private readonly SemaphoreSlim _loadLock = new(1, 1);
         private const string AuthCookieName = ".ROBLOSECURITY";
         private const string SupportedVersion = "1";
         private const string AuthPattern = $@"\t{AuthCookieName}\t(.+?)(;|$)";
@@ -41,8 +42,15 @@ namespace GokuTrap
                 throw new NullReferenceException("Cookie access is not enabled");
 
             request.Headers.Add("Cookie", $".ROBLOSECURITY={AuthCookie}");
-            var response = await App.HttpClient.SendAsync(request);
-
+            HttpResponseMessage response;
+            try { response = await App.HttpClient.SendAsync(request); }
+            finally { request.Headers.Remove("Cookie"); }
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                Clear();
+                State = CookieState.Invalid;
+                App.Accounts.InvalidateSession();
+            }
             return response;
         }
 
@@ -56,7 +64,7 @@ namespace GokuTrap
             try
             {
                 Uri apiUrl = UrlBuilder.BuildApiUrl("users", "v1/users/authenticated");
-                HttpResponseMessage response = await AuthGet(apiUrl);
+                using HttpResponseMessage response = await AuthGet(apiUrl);
                 response.EnsureSuccessStatusCode();
 
                 string content = await response.Content.ReadAsStringAsync();
@@ -70,13 +78,25 @@ namespace GokuTrap
                 App.Logger.WriteException(LOG_IDENT, ex);
             }
 
+            Clear();
+            State = CookieState.Invalid;
             return null;
         }
 
-        public async Task LoadCookies()
+        public void Clear() => AuthCookie = string.Empty;
+
+        public async Task LoadCookies(bool forceRefresh = false)
+        {
+            await _loadLock.WaitAsync();
+            try { await LoadCookiesCore(forceRefresh); }
+            finally { _loadLock.Release(); }
+        }
+
+        private async Task LoadCookiesCore(bool forceRefresh)
         {
             const string LOG_IDENT = "CookiesManager::LoadCookies";
 
+            if (forceRefresh || !Enabled) Clear();
             // we use the status to infrom user about it in the menu
             if (!Enabled)
             {
@@ -112,7 +132,9 @@ namespace GokuTrap
                 byte[] encryptedData = Convert.FromBase64String(cookies.Cookies);
                 byte[] unencryptedData = ProtectedData.Unprotect(encryptedData, null, DataProtectionScope.CurrentUser);
 
-                string rawCookies = Encoding.UTF8.GetString(unencryptedData);
+                string rawCookies;
+                try { rawCookies = Encoding.UTF8.GetString(unencryptedData); }
+                finally { CryptographicOperations.ZeroMemory(unencryptedData); }
                 Match authCookieMatch = Regex.Match(rawCookies, AuthPattern);
 
                 if (!authCookieMatch.Success)
@@ -134,6 +156,7 @@ namespace GokuTrap
                     return;
                 }
 
+                if (!Enabled) { Clear(); State = CookieState.NotAllowed; return; }
                 State = CookieState.Success;
             }
             catch (Exception ex)
@@ -141,6 +164,7 @@ namespace GokuTrap
                 App.Logger.WriteLine(LOG_IDENT, "Failed to load cookie!");
                 App.Logger.WriteException(LOG_IDENT, ex); 
 
+                Clear();
                 State = CookieState.Failed;
             }
 

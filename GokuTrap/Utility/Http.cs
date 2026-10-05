@@ -9,9 +9,9 @@
         /// <param name="url"></param>
         /// <exception cref="HttpRequestException"></exception>
         /// <exception cref="JsonException"></exception>
-        public static async Task<T> GetJson<T>(Uri url)
+        public static async Task<T> GetJson<T>(Uri url, CancellationToken cancellationToken = default)
         {
-            var request = await App.HttpClient.GetAsync(url);
+            using var request = await App.HttpClient.GetAsync(url, cancellationToken);
 
             request.EnsureSuccessStatusCode();
 

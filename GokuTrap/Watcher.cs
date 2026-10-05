@@ -61,6 +61,8 @@ namespace GokuTrap
             if (App.Settings.Prop.EnableActivityTracking)
             {
                 ActivityWatcher = new(_watcherData.LogFile);
+                ActivityWatcher.OnGameJoin += (_, _) => SavePlaceContext();
+                ActivityWatcher.OnGameLeave += (_, _) => ClearPlaceContext();
 
                 if (App.Settings.Prop.UseDisableAppPatch)
                 {
@@ -117,11 +119,31 @@ namespace GokuTrap
             if (!_lock.IsAcquired || _watcherData is null)
                 return;
 
+            if (App.Settings.Prop.SaiyanMode.Enabled) App.SaiyanMode.ApplyToRunningRobloxPlayers();
+            App.Overlay.StartForRoblox(_watcherData.ProcessId, new IntPtr(_watcherData.Handle));
             ActivityWatcher?.Start();
             WindowManipulation?.Start();
 
-            while (Utilities.GetProcessesSafe().Any(x => x.Id == _watcherData.ProcessId))
-                await Task.Delay(1000);
+            int contextTicks = 0;
+            while (true)
+            {
+                bool alive = false;
+                bool manageAll = App.Settings.Prop.SaiyanMode.Enabled || App.Settings.Prop.Overlay.Enabled;
+                foreach (var process in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(App.RobloxPlayerAppName)))
+                    using (process) { if (SaiyanPerformanceManager.IsRobloxPlayer(process) && (manageAll || process.Id == _watcherData.ProcessId)) alive = true; }
+                if (!alive) break;
+                // Re-read settings so disable/reset in the settings process affects this manager.
+                bool settingsChanged = FeatureRuntime.TryReloadSettings();
+                if (App.Settings.Prop.SaiyanMode.Enabled) App.SaiyanMode.ApplyToRunningRobloxPlayers();
+                else App.SaiyanMode.RestoreAll();
+                if (!App.Settings.Prop.Overlay.Enabled) App.Overlay.Dispose();
+                else if (settingsChanged) App.Overlay.ApplyToRunningPlayer();
+                if (ActivityWatcher?.InGame == true && contextTicks++ % 6 == 0) SavePlaceContext();
+                await Task.Delay(5000);
+            }
+            App.SaiyanMode.RestoreAll();
+            App.Overlay.Dispose();
+            ClearPlaceContext();
 
             AppStorageManager.Apply();
 
@@ -135,12 +157,26 @@ namespace GokuTrap
                 Process.Start(Paths.Process, "-settings -testmode");
         }
 
+        private void SavePlaceContext()
+        {
+            if (ActivityWatcher?.Data.ServerType != ServerType.Public) { ClearPlaceContext(); return; }
+            FeatureRuntime.PublishActivity(ActivityWatcher.Data.PlaceId, ActivityWatcher.Data.JobId);
+        }
+
+        private void ClearPlaceContext()
+        {
+            FeatureRuntime.PublishActivity(null, null);
+        }
+
         public void Dispose()
         {
             App.Logger.WriteLine("Watcher::Dispose", "Disposing Watcher");
 
             _notifyIcon?.Dispose();
             RichPresence?.Dispose();
+            ActivityWatcher?.Dispose();
+            App.SaiyanMode.RestoreAll();
+            App.Overlay.Dispose();
 
             App.State.Prop.WatcherRunning = false;
 

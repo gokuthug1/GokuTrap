@@ -47,6 +47,10 @@ namespace GokuTrap.UI.Elements.Settings
             gbs.IsEnabled = viewModel.GBSEnabled; // binding doesnt work as expected so we are setting it in here instead
 
             LoadState();
+            var updateTimer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMinutes(15) };
+            updateTimer.Tick += async (_, _) => await App.Updates.CheckAsync();
+            Loaded += async (_, _) => { updateTimer.Start(); await App.Updates.CheckAsync(); App.FastFlagCatalog.LoadCachedCatalog(); };
+            Closed += (_, _) => updateTimer.Stop();
 
             string? lastPageName = App.State.Prop.LastPage;
             Type? lastPage = lastPageName is null ? null : Type.GetType(lastPageName);

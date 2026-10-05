@@ -465,13 +465,11 @@ namespace GokuTrap
 
             Filesystem.AssertReadOnly(Paths.Application);
 
-            using (var ipl = new InterProcessLock("AutoUpdater", TimeSpan.FromSeconds(5)))
+            using var upgradeLock = new InterProcessLock("AutoUpdater", TimeSpan.FromSeconds(5));
+            if (!upgradeLock.IsAcquired)
             {
-                if (!ipl.IsAcquired)
-                {
-                    App.Logger.WriteLine(LOG_IDENT, "Failed to update! (Could not obtain singleton mutex)");
-                    return;
-                }
+                App.Logger.WriteLine(LOG_IDENT, "Failed to update! (Could not obtain singleton mutex)");
+                return;
             }
 
             // prior to 2.8.0, auto-updating was handled with this... bruteforce method
@@ -480,7 +478,9 @@ namespace GokuTrap
             {
                 try
                 {
-                    File.Copy(Paths.Process, Paths.Application, true);
+                    string replacement = Paths.Application + ".replacement";
+                    File.Copy(Paths.Process, replacement, true);
+                    ApplicationUpdateService.ReplaceWithRollback(replacement, Paths.Application);
                     break;
                 }
                 catch (Exception ex)
