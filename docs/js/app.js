@@ -76,7 +76,7 @@
     const REPO_OWNER = 'gokuthug1';
     const REPO_NAME = 'GokuTrap';
     const API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`;
-    const FALLBACK_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases`;
+    const FALLBACK_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases/download/v3.1.2/GokuTrap.exe`;
 
     try {
       const response = await fetch(API_URL);
@@ -94,7 +94,7 @@
       noteEl.textContent = `Latest stable Windows release (${data.name || tagName})`;
 
       // Find direct GokuTrap.exe asset if present
-      let downloadUrl = data.html_url || FALLBACK_URL;
+      let downloadUrl = FALLBACK_URL;
       if (Array.isArray(data.assets)) {
         const exeAsset = data.assets.find(function (a) {
           return a.name && a.name.toLowerCase().endsWith('.exe');
@@ -104,14 +104,26 @@
         }
       }
 
-      if (heroBtn) heroBtn.href = downloadUrl;
-      if (bannerBtn) bannerBtn.href = downloadUrl;
+      if (heroBtn) {
+        heroBtn.href = downloadUrl;
+        heroBtn.setAttribute('download', 'GokuTrap.exe');
+      }
+      if (bannerBtn) {
+        bannerBtn.href = downloadUrl;
+        bannerBtn.setAttribute('download', 'GokuTrap.exe');
+      }
     } catch (err) {
       // Graceful fallback without fabricating data
       tagEl.textContent = 'v3.1.2';
-      noteEl.textContent = 'Production build available on GitHub Releases';
-      if (heroBtn) heroBtn.href = FALLBACK_URL;
-      if (bannerBtn) bannerBtn.href = FALLBACK_URL;
+      noteEl.textContent = 'Direct installer available (v3.1.2)';
+      if (heroBtn) {
+        heroBtn.href = FALLBACK_URL;
+        heroBtn.setAttribute('download', 'GokuTrap.exe');
+      }
+      if (bannerBtn) {
+        bannerBtn.href = FALLBACK_URL;
+        bannerBtn.setAttribute('download', 'GokuTrap.exe');
+      }
     }
   }
 
