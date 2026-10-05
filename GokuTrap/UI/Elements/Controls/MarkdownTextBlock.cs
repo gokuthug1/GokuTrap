@@ -1,4 +1,4 @@
-﻿using GokuTrap.UI.ViewModels;
+using GokuTrap.UI.ViewModels;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Markup;
@@ -114,7 +114,7 @@ namespace GokuTrap.UI.Elements.Controls
             var lastBlock = document.Last();
 
             // matt was evidently very tired on the night he was first writing this
-            // https://github.com/YourGitHubName/GokuTrap/blob/289b9dec77cf35b2cc6504019bc9c7701626be1f/GokuTrap/UI/Elements/Controls/MarkdownTextBlock.cs#L111
+            // https://github.com/gokuthug1/GokuTrap/blob/289b9dec77cf35b2cc6504019bc9c7701626be1f/GokuTrap/UI/Elements/Controls/MarkdownTextBlock.cs#L111
             foreach (var block in document)
             {
                 if (block is not ParagraphBlock paragraphBlock || paragraphBlock.Inline is null)

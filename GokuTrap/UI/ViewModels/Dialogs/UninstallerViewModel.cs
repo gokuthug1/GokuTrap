@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 
 using GokuTrap.Resources;
@@ -9,7 +9,7 @@ namespace GokuTrap.UI.ViewModels.Dialogs
     {
         public string Text => String.Format(
             Strings.Uninstaller_Text, 
-            "https://github.com/YourGitHubName/GokuTrap/wiki/Roblox-crashes-or-does-not-launch",
+            "https://github.com/gokuthug1/GokuTrap/wiki/Roblox-crashes-or-does-not-launch",
             Paths.Base
         );
 

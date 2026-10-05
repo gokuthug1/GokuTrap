@@ -1,4 +1,4 @@
-﻿// To debug the automatic updater:
+// To debug the automatic updater:
 // - Uncomment the definition below
 // - Publish the executable
 // - Launch the executable (click no when it asks you to upgrade)
@@ -1812,7 +1812,7 @@ namespace GokuTrap
                     {
                         Frontend.ShowConnectivityDialog(
                             Strings.Dialog_Connectivity_UnableToDownload,
-                            String.Format(Strings.Dialog_Connectivity_UnableToDownloadReason, "[https://github.com/YourGitHubName/GokuTrap/wiki/GokuTrap-is-unable-to-download-Roblox](https://github.com/YourGitHubName/GokuTrap/wiki/GokuTrap-is-unable-to-download-Roblox)"),
+                            String.Format(Strings.Dialog_Connectivity_UnableToDownloadReason, $"[{App.ProjectHelpLink}/GokuTrap-is-unable-to-download-Roblox]({App.ProjectHelpLink}/GokuTrap-is-unable-to-download-Roblox)"),
                             MessageBoxImage.Error,
                             ex
                         );

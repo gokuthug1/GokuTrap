@@ -96,10 +96,10 @@ python Scripts/GenerateAssets.py
 
 ---
 
-[badge-license]:   https://img.shields.io/github/license/YourGitHubName/GokuTrap?style=flat-square
-[badge-actions]:   https://img.shields.io/github/actions/workflow/status/YourGitHubName/GokuTrap/ci-release.yml?branch=main&style=flat-square&label=builds
-[badge-latest]:    https://img.shields.io/github/v/release/YourGitHubName/GokuTrap?style=flat-square&color=ff7b00
-[badge-stars]:     https://img.shields.io/github/stars/YourGitHubName/GokuTrap?style=flat-square&color=dd9900
+[badge-license]:   https://img.shields.io/github/license/gokuthug1/GokuTrap?style=flat-square
+[badge-actions]:   https://img.shields.io/github/actions/workflow/status/gokuthug1/GokuTrap/ci-release.yml?branch=main&style=flat-square&label=builds
+[badge-latest]:    https://img.shields.io/github/v/release/gokuthug1/GokuTrap?style=flat-square&color=ff7b00
+[badge-stars]:     https://img.shields.io/github/stars/gokuthug1/GokuTrap?style=flat-square&color=dd9900
 
-[repo-latest]:    https://github.com/YourGitHubName/GokuTrap/releases/latest
-[repo-new-issue]: https://github.com/YourGitHubName/GokuTrap/issues/new/choose
+[repo-latest]:    https://github.com/gokuthug1/GokuTrap/releases/latest
+[repo-new-issue]: https://github.com/gokuthug1/GokuTrap/issues/new/choose

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace GokuTrap.Utility
         {
             foreach (var drive in DriveInfo.GetDrives())
             {
-                // https://github.com/YourGitHubName/GokuTrap/issues/1648#issuecomment-2192571030
+                // https://github.com/gokuthug1/GokuTrap/issues/1648#issuecomment-2192571030
                 if (path.ToUpperInvariant().StartsWith(drive.Name))
                     return drive.AvailableFreeSpace;
             }

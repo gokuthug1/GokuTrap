@@ -1,4 +1,4 @@
-﻿<ui:UiPage x:Class="GokuTrap.UI.Elements.About.Pages.AboutPage"
+<ui:UiPage x:Class="GokuTrap.UI.Elements.About.Pages.AboutPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="Image1" Grid.Column="0" Width="72" Height="72" VerticalAlignment="Center" Source="pack://application:,,,/GokuTrap;component/GokuTrap.ico" RenderOptions.BitmapScalingMode="HighQuality" />
+            <Image x:Name="Image1" Grid.Column="0" Width="72" Height="72" VerticalAlignment="Center" Source="pack://application:,,,/GokuTrap;component/GokuTrap.png" RenderOptions.BitmapScalingMode="HighQuality" />
             <Image x:Name="Image2" Grid.Column="0" Width="72" Height="72" VerticalAlignment="Center" Source="pack://application:,,,/GokuTrap;component/Resources/BootstrapperStyles/ByfronDialog/Matt.png" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0" />
 
             <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
@@ -47,10 +47,10 @@
         </Grid>
 
         <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_GithubRepository}" Icon="Code24" NavigateUri="https://github.com/YourGitHubName/GokuTrap" />
-            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_HelpInformation}" Icon="BookQuestionMark24" NavigateUri="https://github.com/YourGitHubName/GokuTrap/wiki" />
-            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_ReportIssue}" Icon="BookExclamationMark24" NavigateUri="https://github.com/YourGitHubName/GokuTrap/issues" />
-            <ui:Anchor Margin="0,0,0,8" Content="{x:Static resources:Strings.Menu_About_DiscordServer}" Icon="Chat48" NavigateUri="https://discord.gg/xSsamjAU84" />
+            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_GithubRepository}" Icon="Code24" NavigateUri="https://github.com/gokuthug1/GokuTrap" />
+            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_HelpInformation}" Icon="BookQuestionMark24" NavigateUri="https://github.com/gokuthug1/GokuTrap/wiki" />
+            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_ReportIssue}" Icon="BookExclamationMark24" NavigateUri="https://github.com/gokuthug1/GokuTrap/issues" />
+            <ui:Anchor Margin="0,0,0,8" Content="{x:Static resources:Strings.Menu_About_DiscordServer}" Icon="Chat48" NavigateUri="https://github.com/gokuthug1/GokuTrap" />
         </WrapPanel>
 
         <StackPanel Visibility="{Binding BuildInformationVisibility, Mode=OneTime}">
@@ -97,7 +97,7 @@
 
             <controls:Expander Grid.Column="0" Margin="0,0,4,0" HeaderIcon="Code24" HeaderText="{x:Static resources:Strings.Menu_About_Contributors_Code}" IsExpanded="True">
                 <StackPanel>
-                    <controls:MarkdownTextBlock MarkdownText="[return_request](https://github.com/YourGitHubName)" />
+                    <controls:MarkdownTextBlock MarkdownText="[gokuthug1](https://github.com/gokuthug1)" />
                     <controls:MarkdownTextBlock MarkdownText="[Alexa](https://github.com/GoingCrazyDude/)" />
                     <controls:MarkdownTextBlock MarkdownText="[pizzaboxer](https://github.com/pizzaboxer)" />
                     <controls:MarkdownTextBlock MarkdownText="[Matt](https://github.com/bluepilledgreat)" />

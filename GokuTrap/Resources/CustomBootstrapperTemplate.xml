@@ -1,4 +1,4 @@
-﻿<GokuTrapCustomBootstrapper Version="1" Height="320" Width="500" AllowTransparency="False" WindowBackdropType="Disable" WindowCornerPreference="Default">
+<GokuTrapCustomBootstrapper Version="1" Height="320" Width="500" AllowTransparency="False" WindowBackdropType="Disable" WindowCornerPreference="Default">
 	<!-- Put UI elements here -->
-	<!-- Examples of custom bootstrappers can be found at https://github.com/YourGitHubName/custom-bootstrapper-examples -->
+	<!-- Examples of custom bootstrappers can be found at https://github.com/gokuthug1/custom-bootstrapper-examples -->
 </GokuTrapCustomBootstrapper>

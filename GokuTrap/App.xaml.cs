@@ -18,11 +18,11 @@ namespace GokuTrap
 #else
         public const string ProjectName = "GokuTrap";
 #endif
-        public const string ProjectOwner = "YourGitHubName";
-        public const string ProjectRepository = "YourGitHubName/GokuTrap";
-        public const string ProjectDownloadLink = "https://github.com/YourGitHubName/GokuTrap/releases";
-        public const string ProjectHelpLink = "https://github.com/YourGitHubName/GokuTrap/wiki";
-        public const string ProjectSupportLink = "https://github.com/YourGitHubName/GokuTrap/issues/new";
+        public const string ProjectOwner = "gokuthug1";
+        public const string ProjectRepository = "gokuthug1/GokuTrap";
+        public const string ProjectDownloadLink = "https://github.com/gokuthug1/GokuTrap/releases";
+        public const string ProjectHelpLink = "https://github.com/gokuthug1/GokuTrap/wiki";
+        public const string ProjectSupportLink = "https://github.com/gokuthug1/GokuTrap/issues/new";
         public const string ProjectRemoteDataLink = "https://config.gokutrap.app/v1/Data.json";
 
         public const string RobloxPlayerAppName = "RobloxPlayerBeta.exe";

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +39,7 @@ namespace GokuTrap.UI.Elements.Dialogs
             Random Chance = new();
             if (Chance.Next(0, 10000) == 1)
             {
-                LaunchTitle.Text = "Fishtrap";
+                LaunchTitle.Text = "Super Saiyan";
             }
         }
     }
